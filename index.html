@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" type="text/css" href="./assets/style/style.css" />
+
+    <script src="main.js" type="module"></script>
+
+    <title>Frontend Mentor | Multi-step form</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body class="grid-flow">
+    <div class="container grid-flow">
+      <!-- Sidebar start -->
+      <nav class="nav grid-flow">
+        <img
+          src="./assets/images/bg-sidebar-mobile.svg"
+          class="nav__img hidden"
+          data-screen="mobile"
+        />
+        <img
+          src="./assets/images/bg-sidebar-desktop.svg"
+          class="nav__img hidden"
+          data-screen="desktop"
+        />
+        <ul
+          class="grid-flow align--center nav__list txt--uppercase"
+          role="list"
+        >
+          <li class="grid-flow flow--col">
+            <div
+              class="list__num grid-flow justify--center"
+              id="nav-step1"
+              data-active
+            >
+              1
+            </div>
+            <div class="hidden" data-screen="desktop">
+              <p class="fc--primary-3 fs--75">step 1</p>
+              <p class="fc--neutral-white">your info</p>
+            </div>
+          </li>
+          <li class="grid-flow flow--col">
+            <div class="list__num grid-flow justify--center" id="nav-step2">
+              2
+            </div>
+            <div class="hidden" data-screen="desktop">
+              <p class="fc--primary-3 fs--75">step 2</p>
+              <p class="fc--neutral-white">select plan</p>
+            </div>
+          </li>
+          <li class="grid-flow flow--col">
+            <div class="list__num grid-flow justify--center" id="nav-step3">
+              3
+            </div>
+            <div class="hidden" data-screen="desktop">
+              <p class="fc--primary-3 fs--75">step 3</p>
+              <p class="fc--neutral-white">add-ons</p>
+            </div>
+          </li>
+          <li class="grid-flow flow--col">
+            <div class="list__num grid-flow justify--center" id="nav-step4">
+              4
+            </div>
+            <div class="hidden" data-screen="desktop">
+              <p class="fc--primary-3 fs--75">step 4</p>
+              <p class="fc--neutral-white">summary</p>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <!-- Sidebar end -->
+
+      <!-- main content Start -->
+
+      <section class="page-container grid-flow flow--row set-padding">
+        <header class="flow hidden">
+          <h1 class="fs--300 fc--primary-1 fw--bold" id="title"></h1>
+          <p class="fs--125 fc--neutral-2" id="sub-title"></p>
+        </header>
+        <main class="grid-flow align--center">
+          <!-- Steps template start -->
+
+          <!-- Steps template end -->
+        </main>
+        <footer class="footer flow--col justify--between grid-flow hidden">
+          <a
+            href=""
+            class="btn bg--transparent fc--neutral-2"
+            id="btn--back"
+            data-btn-secondary
+          >
+            go back
+          </a>
+          <a
+            href="step2"
+            class="btn bg--primary-1 fc--neutral-white"
+            id="btn--next"
+            data-btn-primary
+          >
+            next step
+          </a>
+        </footer>
+      </section>
+
+      <!-- main content End -->
+    </div>
+
+    <!-- Step 1 Template start -->
+    <template id="step1">
+      <form action="" class="flow place--left">
+        <div>
+          <div class="grid-flow flow--col justify--between">
+            <label for="name" class="fc--primary-1 txt--capitalize">
+              name
+            </label>
+            <span class="hidden fc--accent-2 error-message" data-hidden
+              >This field is required</span
+            >
+          </div>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="cart set-padding"
+            placeholder="e.g. Stephen King"
+            data-id="0"
+            required
+          />
+        </div>
+        <div>
+          <div class="grid-flow flow--col justify--between">
+            <label for="email" class="fc--primary-1 txt--capitalize">
+              email address
+            </label>
+            <span class="hidden fc--accent-2 error-message" data-hidden
+              >This field is required</span
+            >
+          </div>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="cart set-padding"
+            placeholder="e.g. stephenking@lorem.com"
+            data-id="1"
+            required
+          />
+        </div>
+        <div>
+          <div class="grid-flow flow--col justify--between">
+            <label for="phone" class="fc--primary-1 txt--capitalize">
+              phone number
+            </label>
+            <span class="hidden fc--accent-2 error-message" data-hidden
+              >This field is required</span
+            >
+          </div>
+          <input
+            type="number"
+            name="phone"
+            id="phone"
+            class="cart set-padding"
+            placeholder="e.g. +1 234 567 890"
+            data-id="2"
+            required
+          />
+        </div>
+      </form>
+    </template>
+    <!-- Step 1 Template end -->
+
+    <!-- Step 2 Template start -->
+    <template id="step2">
+      <ul class="grid-flow flow--col plan place--left">
+        <li
+          class="cart grid-flow flow--variable justify--start align--between set-padding"
+          data-checked
+          data-id="arcade"
+        >
+          <img
+            src="assets/images/icon-arcade.svg"
+            class="icon"
+            alt="icon of arcade plan"
+          />
+          <div>
+            <p class="fc--primary-1 fw--semi-bold fs--125">Arcade</p>
+            <p class="plan-cost fc--neutral-2">$90/yr</p>
+            <p class="extra-info fc--accent-3 hidden" data-hidden>
+              2 months free
+            </p>
+          </div>
+        </li>
+        <li
+          class="cart grid-flow flow--variable justify--start align--between set-padding"
+          data-id="advanced"
+        >
+          <img
+            src="assets/images/icon-advanced.svg"
+            class="icon"
+            alt="icon of advanced plan"
+          />
+          <div>
+            <p class="fc--primary-1 fw--semi-bold fs--125">Advanced</p>
+            <p class="plan-cost fc--neutral-2">$120/yr</p>
+            <p class="extra-info fc--accent-3 hidden" data-hidden>
+              2 months free
+            </p>
+          </div>
+        </li>
+        <li
+          class="cart grid-flow flow--variable justify--start align--between set-padding"
+          data-id="pro"
+        >
+          <img
+            src="assets/images/icon-pro.svg"
+            class="icon"
+            alt="icon of pro plan"
+          />
+          <div>
+            <p class="fc--primary-1 fw--semi-bold fs--125">Pro</p>
+            <p class="plan-cost fc--neutral-2">$150/yr</p>
+            <p class="extra-info fc--accent-3 hidden" data-hidden>
+              2 months free
+            </p>
+          </div>
+        </li>
+      </ul>
+      <ul
+        class="grid-flow flow--col justify--center align--center bg--neutral-1 option fc--neutral-2 place--left"
+        id="plan-cost-type"
+      >
+        <li class="fw--bold" data-selected data-id="mo">Monthly</li>
+        <div
+          class="btn-radio bg--primary-1 grid-flow justify--center align--center"
+        >
+          <span
+            class="btn-radio__toggle bg--neutral-white"
+            id="btn-cost-type-radio-toggle"
+            data-side="mo"
+          ></span>
+        </div>
+        <li class="fw--bold" data-id="yr">Yearly</li>
+      </ul>
+    </template>
+
+    <!-- Step 2 Template end -->
+
+    <!-- Step 3 Template start -->
+    <template id="step3">
+      <ul class="flow place--left">
+        <li
+          class="cart grid-flow flow--col align--center justify--between set-padding"
+          data-id="Online service"
+        >
+          <div class="grid-flow">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="9"
+              viewBox="0 0 12 9"
+              class="check-icon set-padding"
+            >
+              <path
+                fill="none"
+                stroke="#FFF"
+                stroke-width="2"
+                d="m1 4 3.433 3.433L10.866 1"
+              />
+            </svg>
+            <div>
+              <p class="fc--primary-1 fw--bold">Online service</p>
+              <p class="fc--neutral-2">Access to multiplayer games</p>
+            </div>
+          </div>
+          <p class="fc--accent-1 addons-price">+$1/mo</p>
+        </li>
+        <li
+          class="cart grid-flow flow--col align--center justify--between set-padding"
+          data-id="Larger storage"
+        >
+          <div class="grid-flow">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="9"
+              viewBox="0 0 12 9"
+              class="check-icon set-padding"
+            >
+              <path
+                fill="none"
+                stroke="#FFF"
+                stroke-width="2"
+                d="m1 4 3.433 3.433L10.866 1"
+              />
+            </svg>
+            <div>
+              <p class="fc--primary-1 fw--bold">Larger storage</p>
+              <p class="fc--neutral-2">Extra 1TB of cloud save</p>
+            </div>
+          </div>
+          <p class="fc--accent-1 addons-price">+$1/mo</p>
+        </li>
+        <li
+          class="cart grid-flow flow--col align--center justify--between set-padding"
+          data-id="Customizable profile"
+        >
+          <div class="grid-flow">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="9"
+              viewBox="0 0 12 9"
+              class="check-icon set-padding"
+            >
+              <path
+                fill="none"
+                stroke="#FFF"
+                stroke-width="2"
+                d="m1 4 3.433 3.433L10.866 1"
+              />
+            </svg>
+            <div>
+              <p class="fc--primary-1 fw--bold">Customizable profile</p>
+              <p class="fc--neutral-2">Custome theme on your profile</p>
+            </div>
+          </div>
+          <p class="fc--accent-1 addons-price">+$1/mo</p>
+        </li>
+      </ul>
+    </template>
+
+    <!-- Step 3 end -->
+
+    <!-- Step 4 start -->
+    <template id="step4">
+      <ul class="flow place--left">
+        <div class="cart--sec flow set-padding plan-container">
+          <li class="grid-flow flow--col justify--between plan-item">
+            <div>
+              <p class="fc--primary-1 fw--bold txt--capitalize" id="plan-name"></p>
+              <a href="step2" class="fc--neutral-2 txt--underline" id="change-link">Change</a>
+            </div>
+            <p class="fc--primary-1 fw--bold" id="plan-price"></p>
+          </li>
+          <div class="line"></div>
+          <template id="step4-plan-item">
+            <li class="grid-flow flow--col justify--between plan-item">
+              <p class="fc--neutral-2 addons-name"></p>
+              <p class="fc--primary-1 addons-price"></p>
+            </li>
+          </template>
+          <!-- <li class="grid-flow flow--col justify--between plan-item hidden">
+            <p class="fc--neutral-2"></p>
+            <p class="fc--primary-1"></p>
+          </li> -->
+        </div>
+        <li class="grid-flow flow--col justify--between set-padding">
+          <p class="fc--neutral-1" id="total-name">Total <span></span></p>
+          <p class="fc--accent-1 fw--bold fs--125" id="total-price"></p>
+        </li>
+      </ul>
+    </template>
+
+    <!-- Step 4 end -->
+
+    <!-- Step 5 start -->
+    <template id="step5">
+      <section class="grid-flow justify--center align--center preview place--left">
+        <img src="assets/images/icon-thank-you.svg" alt="" />
+        <h1 class="fc--primary-1 fw--bold">Thank you!</h1>
+        <p class="fc--neutral-2">
+          Thanks for confirming your subscription! We hope you have fun using
+          our platform. If you ever need support, please feel free to email us
+          at support@loremgaming.com.
+        </p>
+      </section>
+    </template>
+    <!-- Step 5 end -->
+
+    <!-- <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </div> -->
+  </body>
+</html>
