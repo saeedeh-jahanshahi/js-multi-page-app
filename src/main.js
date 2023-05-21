@@ -52,10 +52,11 @@ const initUserId = function () {
 const findCurrentPathIndex = (path) => pathNames.indexOf(path);
 
 const updateHeaders = function (path) {
-  axios.get(`http://localhost:3000/headers/${path}`).then((response) => {
+  axios.get(`https://multi-page-app-62c23-default-rtdb.asia-southeast1.firebasedatabase.app/headers/${path}.json`).then((response) => {
     header.textContent = response.data.title;
     subHeader.textContent = response.data.subtitle;
   });
+  
 };
 const updateLinksHref = function (pathIndex) {
   const nextPath =

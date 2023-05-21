@@ -18,7 +18,7 @@ const retreiveData = function () {
 };
 
 const planInfo = async function () {
-  let cartInfo = await axios.get('http://localhost:3000/info/step2');
+  let cartInfo = await axios.get('https://multi-page-app-62c23-default-rtdb.asia-southeast1.firebasedatabase.app/info/step2.json');
   cartInfo = cartInfo.data[costPeriod];
   // console.log(cartInfo);
   carts.forEach((cart) => {

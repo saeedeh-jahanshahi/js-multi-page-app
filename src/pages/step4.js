@@ -2,8 +2,8 @@ import axios from 'axios';
 import { goback, changeBtn } from '../main';
 
 const getTotalInfo = async function(user){
-  let planPrice = await axios.get('http://localhost:3000/info/step2');
-  let addons = await axios.get('http://localhost:3000/info/step3');
+  let planPrice = await axios.get('https://multi-page-app-62c23-default-rtdb.asia-southeast1.firebasedatabase.app/info/step2.json');
+  let addons = await axios.get('https://multi-page-app-62c23-default-rtdb.asia-southeast1.firebasedatabase.app/info/step3.json');
   addons = addons.data[user.costPeriod];
   planPrice =  planPrice.data[user.costPeriod][user.planName];
   let addonsPrice = {};
@@ -46,7 +46,7 @@ const addInfo = function(user, elements){
 export const step4Store = async function(){
   const user = sessionStorage.getItem('userInfo');
   try{
-    const result = await axios.post(`http://localhost:3000/users`, user, {
+    const result = await axios.post(`https://multi-page-app-62c23-default-rtdb.asia-southeast1.firebasedatabase.app/users.json`, user, {
       headers: {
         'Content-Type': 'application/json'
       }
