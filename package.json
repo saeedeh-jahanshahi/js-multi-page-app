@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "build-serve": "webpack-dev-server --hot",
-    "json-server": "json-server --watch page-content.json",
-    "concurrent-build-serve": "concurrently --kill-others \"npm run json-server\" \"npm run build-serve\""
+
   },
   "author": "",
   "license": "ISC",
@@ -19,7 +18,6 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "axios": "^1.3.3",
-    "json-server": "^0.17.2"
+    "axios": "^1.3.3"
   }
 }
