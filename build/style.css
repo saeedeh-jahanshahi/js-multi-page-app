@@ -1,0 +1,598 @@
+/* define fonts start */
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../fonts/Ubuntu-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../fonts/Ubuntu-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../fonts/Ubuntu-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+/* define fonts end */
+
+/* define variables start*/
+
+:root {
+  --clr-primary-1: hsl(213, 96%, 18%);
+  --clr-primary-2: hsl(206, 94%, 87%);
+  --clr-primary-3: hsl(228, 100%, 84%);
+
+  --clr-accent-1: hsl(243, 100%, 62%);
+  --clr-accent-2: hsl(354, 84%, 57%);
+  --clr-accent-3: hsl(214, 72%, 32%);
+
+  --clr-neutral-1: hsl(217, 100%, 97%);
+  --clr-neutral-2: hsl(231, 11%, 63%);
+  --clr-neutral-white: hsl(0, 0%, 100%);
+  --clr-neutral-black: hsl(100, 100%, 0%);
+  --clr-neutral-3: hsl(229, 24%, 87%);
+  --clr-neutral-4: hsl(228, 100%, 99%);
+
+  --fw-regular: 400;
+  --fw-semi-bold: 500;
+  --fw-bold: 700;
+
+  --fs-small: 14px;
+  --fs-normal: 18px;
+  --fs-medium: 20px;
+  --fs-big: 30px;
+
+  --size-25: 0.25rem;
+  --size-50: 0.5rem;
+  --size-75: 0.75rem;
+  --size-100: 1rem;
+  --size-125: 1.25rem;
+  --size-150: 1.5rem;
+  --size-200: 2rem;
+  --size-225: 2.24rem;
+  --size-250: 2.5rem;
+  --size-400: 4rem;
+}
+/* define variables end*/
+
+/* resetting style start*/
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* html,
+body {
+  height: 100%;
+} */
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* resetting styles end */
+
+/* general styles start */
+
+body {
+  font-style: 'Ubuntu', 'sans-serif';
+  background-color: var(--clr-neutral-1);
+  line-height: 1.5em;
+  color: var(--clr-neutral-black);
+}
+
+@media (min-width: 699px) {
+  body {
+    --align: center;
+  }
+}
+
+h1 {
+  font-size: var(--size-200);
+  line-height: 0.9em;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  --webkit-appearance: none;
+  --moz-appearance: none;
+  width: 100%;
+  outline: none;
+}
+
+input[data-error] {
+  border-color: var(--clr-accent-2);
+}
+li {
+  list-style: none;
+}
+/* general styles end */
+
+/* composite classes start */
+
+.grid-flow {
+  display: grid;
+  grid-template-columns: var(--cols, repeat(auto-fit, minmax(auto, 1fr)));
+  justify-content: var(--justify, default);
+  align-items: var(--align, start);
+  grid-auto-flow: var(--flow, row);
+  gap: var(--gap, var(--size-75));
+}
+.flow > * + * {
+  margin-top: var(--size-100);
+}
+
+/* composite classes end */
+
+/* utility classes start */
+
+.hidden[data-hidden] {
+  display: none;
+}
+
+@media (max-width: 699px) {
+  .hidden[data-screen='desktop'] {
+    display: none;
+  }
+}
+@media (min-width: 700px) {
+  .hidden[data-screen='mobile'] {
+    display: none;
+  }
+}
+
+*[data-visibility] {
+  visibility: hidden;
+}
+
+.bg--neutral-white {
+  background-color: var(--clr-neutral-white);
+}
+
+.bg--accent-3 {
+  background-color: var(--clr-accent-3);
+}
+
+.bg--primary-1 {
+  background-color: var(--clr-primary-1);
+}
+.bg--neutral-1 {
+  background-color: var(--clr-neutral-1);
+}
+.bg--accent-1 {
+  background-color: var(--clr-accent-1);
+}
+.bg--transparent {
+  background-color: transparent;
+}
+
+.fc--primary-1 {
+  color: var(--clr-primary-1);
+}
+.fc--neutral-2 {
+  color: var(--clr-neutral-2);
+}
+.fc--neutral-white {
+  color: var(--clr-neutral-white);
+}
+.fc--primary-3 {
+  color: var(--clr-primary-3);
+}
+.fc--accent-2 {
+  color: var(--clr-accent-2);
+}
+.fc--accent-1 {
+  color: var(--clr-accent-1);
+}
+.fc--accent-3 {
+  color: var(--clr-accent-3);
+}
+.bc--accent-2 {
+  border-color: var(--clr--accent-2);
+}
+.fs--75 {
+  font-size: var(--size-75);
+}
+.fs--150 {
+  font-size: var(--size-150);
+}
+.fs--125 {
+  font-size: var(--size-125);
+}
+.fs--200 {
+  font-size: var(--size--200);
+}
+.fs--250 {
+  font-size: var(--size--250);
+}
+.fs--225 {
+  font-size: var(--size--225);
+}
+.fw--bold {
+  font-weight: var(--fw-bold);
+}
+.fw--semi-bold {
+  font-weight: var(--fw-semi-bold);
+}
+
+.txt--capitalize {
+  text-transform: capitalize;
+}
+
+.txt--uppercase {
+  text-transform: uppercase;
+}
+
+.txt--underline {
+  text-decoration: underline;
+}
+
+.flow--col {
+  --flow: column;
+}
+.flow--row {
+  --flow: row;
+}
+.justify--start {
+  --justify: start;
+}
+.justify--center {
+  --justify: center;
+}
+.justify--between {
+  --justify: space-between;
+}
+.justify--stretch {
+  --justify: stretch;
+}
+.align--center {
+  --align: center;
+}
+.align--start {
+  --align: start;
+}
+.align--stretch {
+  --align: stretch;
+}
+.align--between {
+  --align: space-between;
+}
+
+.set-padding {
+  padding: var(--pad, --size-100);
+}
+
+/* utility classes end */
+
+/* block classes start */
+
+.nav__list {
+  --rows: default;
+  --gap: var(--size-100);
+  --flow: column;
+  --justify: center;
+  /* width: 80%; */
+}
+
+@media (min-width: 700px) {
+  .nav__list {
+    --flow: row;
+    --justify: start;
+    --cols: 1;
+    padding: var(--size-150);
+    width: fit-content;
+  }
+}
+
+.nav__img {
+  object-fit: cover;
+}
+
+.nav__img[data-screen='mobile'] {
+  position: fixed;
+  width: 100%;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.nav__img[data-screen='desktop'] {
+  align-self: stretch;
+  border-radius: 10px;
+}
+
+.list__num {
+  width: 35px;
+  aspect-ratio: 1;
+  border: solid 1px var(--clr-neutral-white);
+  color: var(--clr-neutral-white);
+  border-radius: 50%;
+  --cols: 1;
+}
+
+.list__num[data-active] {
+  color: inherit;
+  background-color: var(--clr-primary-2);
+  border: none;
+}
+
+.container {
+  width: 95%;
+  margin: var(--size-250) auto;
+  --align: stretch;
+}
+
+@media (max-width: 699px) {
+  .container {
+    --gap: var(--size-200);
+  }
+}
+
+@media (min-width: 700px) {
+  .container {
+    max-width: 1000px;
+    margin: auto;
+    background-color: var(--clr-neutral-white);
+    border-radius: 10px;
+    --cols: 1fr 2fr;
+    padding: var(--size-100);
+  }
+}
+
+.footer {
+  align-self: center;
+}
+
+@media (max-width: 699px) {
+  .footer {
+    position: fixed;
+    bottom: 0;
+    background-color: var(--clr-neutral-white);
+    left: 0;
+    right: 0;
+    padding: var(--size-125);
+  }
+}
+
+.page-container {
+  background-color: var(--clr-neutral-white);
+  border-radius: 10px;
+  --pad: var(--size-250);
+  --cols: 1;
+  --gap: var(--size-200);
+}
+
+.btn {
+  border-radius: 5px;
+  text-transform: capitalize;
+}
+
+.btn[data-btn-primary] {
+  padding: var(--size-75) var(--size-150);
+}
+
+.btn[data-btn-secondary] {
+  padding: var(--size-75) 0;
+}
+
+.btn[data-btn-primary]:hover {
+  opacity: 0.85;
+}
+.btn[data-btn-secondary]:hover {
+  color: var(--clr-primary-1);
+}
+
+@media (min-width: 700px) {
+  .nav {
+    --cols: 1;
+    --align: start;
+    --gap: 0;
+    position: relative;
+    z-index: 2;
+  }
+  .nav > * {
+    grid-row: 1;
+    grid-column: 1;
+  }
+}
+
+.cart {
+  border: solid 1px var(--clr-neutral-3);
+  border-radius: 10px;
+  cursor: pointer;
+  --cols: 1;
+  --pad: var(--size-75);
+}
+
+.cart:focus,
+.cart[data-checked] {
+  border-color: var(--clr-accent-1);
+  background-color: var(--clr-neutral-1);
+}
+
+.cart:hover {
+  border-color: var(--clr-accent-1);
+}
+
+.plan {
+  --gap: var(--size-75);
+}
+
+@media (max-width: 699px) {
+  .plan {
+    --cols: 1fr;
+    --flow: row;
+  }
+}
+
+.flow--variable {
+  --flow: row;
+  grid-template-rows: 1fr auto;
+}
+
+@media (max-width: 699px) {
+  .flow--variable {
+    --flow: column;
+    grid-template-rows: auto;
+  }
+}
+
+.btn-radio {
+  width: 60px;
+  height: 30px;
+  border-radius: 60px;
+  position: relative;
+  --cols: 1;
+  cursor: pointer;
+}
+
+.btn-radio__toggle {
+  width: 20px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: absolute;
+  transition: transform 800ms ease-in-out;
+}
+
+.btn-radio__toggle[data-side='yr'] {
+  /* right: 10px; */
+  transform: translateX(170%);
+}
+.btn-radio__toggle[data-side='mo'] {
+  /* left: 10px; */
+  transform: translateX(30%);
+}
+
+.option {
+  align-self: center;
+  padding: var(--size-50);
+  border-radius: 10px;
+}
+
+.option > li[data-selected] {
+  color: var(--clr-primary-1);
+}
+
+@media (min-width: 700px) {
+  .plan {
+    --cols: repeat(3, 1fr);
+  }
+}
+
+.check-icon {
+  border: solid 1px var(--clr-neutral-2);
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  --pad: 2px;
+}
+
+.check-icon[data-checked] {
+  background-color: var(--clr-accent-1);
+}
+
+.cart--sec {
+  background-color: var(--clr-neutral-1);
+  border-radius: 10px;
+}
+
+.line {
+  width: 90%;
+  height: 1px;
+  background-color: var(--clr-neutral-3);
+  margin: var(--size-100) auto;
+}
+
+.preview {
+  justify-items: center;
+  text-align: center;
+  --gap: var(--size-75);
+}
+
+.preview > img {
+  max-width: 60px;
+}
+
+.place--left {
+  position: relative;
+  transform: translateX(-30%);
+  z-index: 1;
+  transition: all 1000ms;
+  opacity: 0;
+}
+
+.place--left[data-move] {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* block classed end */
